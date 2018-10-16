@@ -6,17 +6,6 @@ export default (store, content) => {
   return `
     <html>
         <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105071304-3"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'UA-105071304-3');
-        </script>
-        
-
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
         <meta charset="UTF-8">        
