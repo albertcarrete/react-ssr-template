@@ -10,12 +10,12 @@ export default [
       {
         path: '/',
         exact: true,
-        component:Home
+        component: Home
       },
       {
         path:'/about',
         exact:true,
-        component:About
+        component: About
       },
       {
         path:'*',

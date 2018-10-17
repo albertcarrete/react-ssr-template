@@ -14,9 +14,16 @@ const router = express.Router();
 router.get('*', (req,res)=>{
   const branch = matchRoutes(routes, req.url);
   // Load any data from each route
-  const promises = branch.map(({route})=>{
-    let fetchData = route.component && route.component.fetchData;
-    return fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+  const promises = branch.map(({route, match})=>{
+    if(route.preload){
+      route.preload(store,match).map((loader)=>{
+        return loader;
+      })
+    }
+    return null;
+    
+    // let fetchData = route.component && route.component.fetchData;
+    // return fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
   })
   
   return Promise.all(promises).then(()=>{
